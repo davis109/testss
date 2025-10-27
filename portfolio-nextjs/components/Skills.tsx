@@ -33,7 +33,6 @@ const Skills = () => {
             toggleActions: 'play none none reverse',
           },
           y: 60,
-          opacity: 0,
           duration: 0.8,
           delay: index * 0.1,
           ease: 'power3.out',
@@ -47,9 +46,8 @@ const Skills = () => {
             start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
-          scale: 0,
-          opacity: 0,
-          rotation: 180,
+          scale: 0.8,
+          rotation: 45,
           stagger: 0.05,
           duration: 0.6,
           ease: 'back.out(1.7)',
@@ -132,14 +130,30 @@ const Skills = () => {
                 return (
                   <div
                     key={skillIndex}
-                    className="skill-card flex flex-col items-center justify-center p-5 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-800/50 rounded-2xl cursor-pointer group w-full max-w-[140px] min-h-[140px] relative overflow-hidden hover:scale-110 hover:-translate-y-2 transition-all duration-300"
+                    className="skill-card flex flex-col items-center justify-center p-5 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700/50 dark:to-gray-800/50 rounded-2xl cursor-pointer group w-full max-w-[140px] min-h-[140px] relative overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl"
+                    style={{ 
+                      perspective: '1000px',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
                     {/* Animated background gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
                     
-                    <div className="mb-3 relative z-10 animate-spin-slow">
+                    <div 
+                      className="mb-3 relative z-10 transition-all duration-500 group-hover:scale-110"
+                      style={{
+                        transform: 'rotateY(0deg)',
+                        transformStyle: 'preserve-3d'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'rotateY(360deg) scale(1.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'rotateY(0deg) scale(1)';
+                      }}
+                    >
                       <IconComponent 
-                        className="text-6xl transition-all duration-300 group-hover:scale-125" 
+                        className="text-6xl" 
                         style={{ color: skill.color }}
                       />
                     </div>
@@ -153,20 +167,6 @@ const Skills = () => {
           </div>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };

@@ -1,11 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
     <nav className="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

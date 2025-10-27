@@ -26,7 +26,6 @@ const Experience = () => {
             toggleActions: 'play none none reverse',
           },
           x: index % 2 === 0 ? -100 : 100,
-          opacity: 0,
           rotationY: index % 2 === 0 ? -15 : 15,
           duration: 1,
           ease: 'power3.out',

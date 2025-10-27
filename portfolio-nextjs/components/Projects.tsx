@@ -25,7 +25,6 @@ const Projects = () => {
             toggleActions: 'play none none reverse',
           },
           y: 100,
-          opacity: 0,
           rotationY: 20,
           duration: 1,
           delay: index * 0.2,

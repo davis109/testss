@@ -111,7 +111,7 @@ const Hero = () => {
 
       <div className="section-container text-center relative z-10">
         <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6" style={{ perspective: '1000px' }}>
-          Hi, I'm <span className="gradient-text">Davis Sebastian</span>
+          Hi, I&apos;m <span className="gradient-text">Davis Sebastian</span>
         </h1>
         
         <h2 className="hero-subtitle text-2xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
