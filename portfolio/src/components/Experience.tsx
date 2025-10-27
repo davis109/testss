@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Experience = () => {
   const ref = useRef(null);
