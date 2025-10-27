@@ -1,31 +1,70 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { 
+  SiPython, SiJavascript, SiTypescript, SiReact, SiNodedotjs, 
+  SiMongodb, SiMysql, SiPostgresql, SiAmazonaws, SiDocker,
+  SiGit, SiGithub, SiExpress, SiFlask, SiTailwindcss,
+  SiBootstrap, SiSelenium, SiSocketdotio, SiVisualstudiocode,
+  SiPostman, SiAndroidstudio, SiFirebase, SiHtml5, SiCss3,
+  SiC, SiJava
+} from 'react-icons/si';
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const skills = [
+  const skillsData = [
     {
       category: 'Languages',
-      items: ['Python', 'Java', 'C', 'JavaScript (ES6)', 'TypeScript', 'SQL', 'HTML', 'CSS']
+      skills: [
+        { name: 'Python', icon: SiPython, color: '#3776AB' },
+        { name: 'Java', icon: SiJava, color: '#007396' },
+        { name: 'C', icon: SiC, color: '#A8B9CC' },
+        { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+        { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+        { name: 'HTML', icon: SiHtml5, color: '#E34F26' },
+        { name: 'CSS', icon: SiCss3, color: '#1572B6' }
+      ]
     },
     {
       category: 'Frameworks & Libraries',
-      items: ['React', 'Node.js', 'Express.js', 'Flask', 'Tailwind CSS', 'Bootstrap', 'Selenium', 'Socket.IO', 'Framer Motion']
+      skills: [
+        { name: 'React', icon: SiReact, color: '#61DAFB' },
+        { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+        { name: 'Express.js', icon: SiExpress, color: '#000000' },
+        { name: 'Flask', icon: SiFlask, color: '#000000' },
+        { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+        { name: 'Bootstrap', icon: SiBootstrap, color: '#7952B3' },
+        { name: 'Selenium', icon: SiSelenium, color: '#43B02A' },
+        { name: 'Socket.IO', icon: SiSocketdotio, color: '#010101' }
+      ]
     },
     {
       category: 'Databases',
-      items: ['MongoDB', 'MySQL', 'PostgreSQL', 'Firebase']
+      skills: [
+        { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+        { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+        { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+        { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' }
+      ]
     },
     {
       category: 'Cloud & DevOps',
-      items: ['AWS EC2', 'AWS S3', 'Docker', 'Firebase', 'Git', 'GitHub']
+      skills: [
+        { name: 'AWS', icon: SiAmazonaws, color: '#FF9900' },
+        { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+        { name: 'Git', icon: SiGit, color: '#F05032' },
+        { name: 'GitHub', icon: SiGithub, color: '#181717' }
+      ]
     },
     {
       category: 'Developer Tools',
-      items: ['VS Code', 'Eclipse', 'Postman', 'Android Studio', 'SSIS']
+      skills: [
+        { name: 'VS Code', icon: SiVisualstudiocode, color: '#007ACC' },
+        { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
+        { name: 'Android Studio', icon: SiAndroidstudio, color: '#3DDC84' }
+      ]
     }
   ];
 
@@ -65,29 +104,60 @@ const Skills = () => {
         </p>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="space-y-12"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {skills.map((skillSet, index) => (
+          {skillsData.map((skillSet, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               className="card"
             >
-              <h3 className="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+              <h3 className="text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400 text-center">
                 {skillSet.category}
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {skillSet.items.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium"
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {skillSet.skills.map((skill, skillIndex) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <motion.div
+                      key={skillIndex}
+                      whileHover={{ 
+                        scale: 1.15, 
+                        rotateY: 15,
+                        rotateX: 10,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl cursor-pointer group"
+                      style={{ 
+                        perspective: '1000px',
+                        transformStyle: 'preserve-3d'
+                      }}
+                    >
+                      <motion.div
+                        className="mb-3"
+                        whileHover={{ 
+                          y: -8,
+                          transition: { duration: 0.3 }
+                        }}
+                        style={{
+                          filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3))',
+                        }}
+                      >
+                        <IconComponent 
+                          className="text-5xl transition-all duration-300" 
+                          style={{ color: skill.color }}
+                        />
+                      </motion.div>
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {skill.name}
+                      </span>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           ))}

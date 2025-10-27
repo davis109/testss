@@ -13,6 +13,7 @@ const Experience = () => {
       location: 'Bengaluru',
       role: 'Software Engineer Apprentice',
       period: 'Jul 2025 – Present',
+      logo: '/images/commonwealth-bank.png',
       highlights: [
         '355-hour advanced apprenticeship in software engineering',
         'Developed full-stack MERN applications & AWS cloud deployment',
@@ -24,6 +25,7 @@ const Experience = () => {
       location: 'Bengaluru',
       role: 'Full Stack Developer Intern',
       period: 'Apr 2025 – Jun 2025',
+      logo: '/images/calyirex.svg',
       highlights: [
         'Developed responsive websites for startup clients with MERN stack',
         'Built reusable templates for client onboarding',
@@ -78,18 +80,53 @@ const Experience = () => {
               key={index}
               variants={itemVariants}
               className="card relative overflow-hidden"
+              whileHover={{ 
+                scale: 1.02,
+                rotateX: 2,
+                rotateY: 2,
+                transition: { duration: 0.3 }
+              }}
+              style={{ 
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-600 to-purple-600"></div>
               
               <div className="pl-6">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                      {exp.role}
-                    </h3>
-                    <h4 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                      {exp.company}
-                    </h4>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-4 mb-3">
+                      <motion.div 
+                        className="relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0"
+                        whileHover={{ 
+                          scale: 1.1,
+                          rotateY: 180,
+                          transition: { duration: 0.6 }
+                        }}
+                        style={{
+                          perspective: '1000px',
+                          transformStyle: 'preserve-3d'
+                        }}
+                      >
+                        <img 
+                          src={exp.logo} 
+                          alt={`${exp.company} logo`}
+                          className="w-full h-full object-contain rounded-lg bg-white p-2 shadow-lg"
+                          style={{
+                            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+                          }}
+                        />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                          {exp.role}
+                        </h3>
+                        <h4 className="text-lg md:text-xl font-semibold text-blue-600 dark:text-blue-400">
+                          {exp.company}
+                        </h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -106,10 +143,16 @@ const Experience = () => {
 
                 <ul className="space-y-2">
                   {exp.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                    <motion.li 
+                      key={idx} 
+                      className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
                       <span className="text-blue-600 dark:text-blue-400 mt-1">▹</span>
                       <span>{highlight}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </div>

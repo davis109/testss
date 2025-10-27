@@ -76,9 +76,21 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card group"
+              className="card group relative"
+              whileHover={{ 
+                y: -10,
+                scale: 1.03,
+                transition: { duration: 0.3 }
+              }}
+              style={{
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <div className="mb-4">
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-xl transition-all duration-300 pointer-events-none" />
+              
+              <div className="mb-4 relative z-10">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {project.title}
                 </h3>
@@ -87,18 +99,23 @@ const Projects = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2 mb-6 relative z-10">
                 {project.tech.map((tech, techIndex) => (
-                  <span
+                  <motion.span
                     key={techIndex}
                     className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-xs font-medium"
+                    whileHover={{ 
+                      scale: 1.1,
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 relative z-10">
                 <a 
                   href={project.github}
                   className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
